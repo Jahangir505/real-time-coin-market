@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // types/index.ts
 export interface PriceData {
     symbol: string;
@@ -57,8 +58,19 @@ export interface WebSocketMessage {
 export interface CoinInfo {
     symbol: string;
     name: string;
-    image?: string;
+    baseAsset: string;
+    quoteAsset: string;
+    status: string;
+    baseAssetPrecision: number;
+    quotePrecision: number;
+    filters: any[];
+    permissions: string[];
     targets: TargetPrice[];
+    price?: number;
+    priceChangePercent?: number;
+    priceChange?: number;
+    volume?: number;
+    lastUpdated?: number;
 }
 
 
@@ -91,4 +103,56 @@ export interface BinanceCoinInfo {
     isMarginTradingAllowed: boolean;
     filters: unknown[];
     permissions: string[];
+}
+
+export interface BinanceExchangeInfo {
+    timezone: string;
+    serverTime: number;
+    rateLimits: any[];
+    exchangeFilters: any[];
+    symbols: BinanceSymbol[];
+}
+
+export interface BinanceSymbol {
+    symbol: string;
+    status: string;
+    baseAsset: string;
+    baseAssetPrecision: number;
+    quoteAsset: string;
+    quotePrecision: number;
+    quoteAssetPrecision: number;
+    baseCommissionPrecision: number;
+    quoteCommissionPrecision: number;
+    orderTypes: string[];
+    icebergAllowed: boolean;
+    ocoAllowed: boolean;
+    quoteOrderQtyMarketAllowed: boolean;
+    allowTrailingStop: boolean;
+    cancelReplaceAllowed: boolean;
+    isSpotTradingAllowed: boolean;
+    isMarginTradingAllowed: boolean;
+    filters: unknown[];
+    permissions: string[];
+}
+
+export interface BinanceTicker {
+    symbol: string;
+    priceChange: string;
+    priceChangePercent: string;
+    weightedAvgPrice: string;
+    prevClosePrice: string;
+    lastPrice: string;
+    lastQty: string;
+    bidPrice: string;
+    askPrice: string;
+    openPrice: string;
+    highPrice: string;
+    lowPrice: string;
+    volume: string;
+    quoteVolume: string;
+    openTime: number;
+    closeTime: number;
+    firstId: number;
+    lastId: number;
+    count: number;
 }
